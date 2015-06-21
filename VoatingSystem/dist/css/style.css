@@ -1,7 +1,222 @@
-﻿.pull-center,
+﻿
+body
+{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+
+.skin-blue .main-header .logo,
+.skin-blue .main-header .logo:hover {
+    background:url("../img/logo.png") no-repeat;
+    background-size: 100% 100%;
+    background-color: #FFF;
+    height: 70px;
+    width: 130px;
+    margin: 3px 0 3px 22px;
+}
+.main-header .sidebar-toggle::before {
+    font-size: 30px;
+}
+
+.main-header .sidebar-toggle {
+    padding: 16px;
+}
+.main-header {
+    box-shadow: 0 0 6px;
+}
+
+.sidebar {
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+.pull-center,
 .main-footer{
     text-align:center;
 }
+
 .navbar-nav > .user-menu > .dropdown-menu {
-    width:197px;
+    width: 187px;
+    margin-top: -15px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
+    color: #FFF;
+    background: #0C2B4E;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
+    color: #000;
+    background: #0C2B4E none repeat scroll 0% 0%;
+}
+
+.main-sidebar,
+.main-header .logo{
+    width:180px;    
+}
+
+.content-wrapper, .right-side, .main-footer, .main-header > .navbar{
+    margin-left:180px; 
+    background-color: #fff;   
+}
+
+.content-wrapper{
+    padding:10px;
+ }
+.user-panel > .info {
+    font-weight: normal;
+}
+
+.stud-table{
+    width:60%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#chartContainer{
+    width:40%;
+    display: inline-block;
+    vertical-align: top;
+}
+.chart-title{
+   text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
+    padding: 10px 0px;
+    background: #0A436E;
+    margin-bottom: 20px;
+}
+table{
+    width:100%;
+}
+.stud-table table tr{
+    padding:3px 2px; 
+}
+
+.stud-table table tr:nth-child(odd){
+    background: #DA8D08 none repeat scroll 0% 0%;
+    box-shadow: 0 2px 2px #9E9E9E;
+    color: #fff;
+ }
+
+.stud-table table th{
+   background: #004165 none repeat scroll 0% 0%;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFF;
+    padding: 10px 2px;
+    text-align: center;
+}
+.stud-table table td{
+    padding:3px 2px;
+    text-align: center;
+    font-size:12px ;
+}
+
+.HeadBoyRow {
+    width:100%;
+    display:inline-block;
+}
+
+.senate-con {
+    width:300px;
+    display:inline-block;
+    box-shadow: 0 0 3px #868585;
+    text-align: center;
+}
+
+.senate-about {
+    cursor:pointer;
+    color: #1474A8;
+}
+.jsgrid-table th{
+    color:#565656;
+}
+
+.jsgrid-table td {
+    color: #514B4B;
+}
+
+.jsgrid-table {
+    width: 100% !important;
+}
+.skin-blue .main-header .navbar{
+    background-color: #007280;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+   background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0 0 5px;
+}
+
+.skin-blue .sidebar-menu > li > a:hover, .skin-blue .sidebar-menu > li.active > a {
+    color: #FFF;
+    background: #007280 none repeat scroll 0% 0%;
+    border-left-color: #000;
+}
+
+.skin-blue .sidebar-menu > li.header {
+    color: #FFF;
+    background: #FF9000 none repeat scroll 0% 0%;
+}
+
+.user-panel {
+    padding: 10px;
+    text-align: center;
+}
+
+.skin-blue .sidebar a {
+    color: #013853;
+}
+
+.skin-blue .sidebar-menu > li > a {
+    margin-right: 0;
+}
+
+.sidebar-menu > li.treeview{
+    margin-top:10px;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover  {
+    background: #083854 none repeat scroll 0% 0%;
+}
+
+.skin-blue .user-panel > .info, .skin-blue .user-panel > .info > a {
+    color: #043153;
+}
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+    margin: 0px;
+    padding:0;
+    background: #022D3E none repeat scroll 0% 0%;
+}
+
+.skin-blue .treeview-menu > li > a {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.sidebar-menu .treeview-menu > li > a > .fa
+{
+   display:none; 
+    }
+    
+.skin-blue .treeview-menu > li.active > a, .skin-blue .treeview-menu > li > a:hover {
+    color: #000;
+    background: #fff;
+}
+
+.skin-blue .main-header .navbar .nav > li > a {
+    color: #FFF;
+    padding: 28px 10px;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover,
+.skin-blue .main-header .navbar .nav > li > a:active,
+.skin-blue .main-header .navbar .nav > li > a:focus,
+.skin-blue .main-header .navbar .nav .open > a,
+.skin-blue .main-header .navbar .nav .open > a:hover,
+.skin-blue .main-header .navbar .nav .open > a:focus{
+    background: #083854 none repeat scroll 0% 0%;
 }

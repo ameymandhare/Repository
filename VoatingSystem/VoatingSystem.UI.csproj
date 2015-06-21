@@ -163,10 +163,13 @@
     <Content Include="plugins\slimScroll\jquery.slimscroll.js" />
     <Content Include="plugins\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="UserControl\UCSenateElection.ascx" />
+    <Content Include="Voting\AHouseNominees.aspx" />
     <Content Include="Voting\CurrentElection.aspx" />
     <Content Include="Voting\NomineeDetails.aspx" />
+    <Content Include="Voting\PHouseNominees.aspx" />
     <Content Include="Voting\StudentElection.aspx" />
     <Content Include="Voting\TestLogin.aspx" />
+    <Content Include="Voting\VHouseNominees.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -279,6 +282,12 @@
     <Compile Include="UserControl\UCSenateElection.ascx.designer.cs">
       <DependentUpon>UCSenateElection.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Voting\AHouseNominees.aspx.cs">
+      <DependentUpon>AHouseNominees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voting\AHouseNominees.aspx.designer.cs">
+      <DependentUpon>AHouseNominees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Voting\CurrentElection.aspx.cs">
       <DependentUpon>CurrentElection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,6 +302,9 @@
     <Compile Include="Voting\NomineeDetails.aspx.designer.cs">
       <DependentUpon>NomineeDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Voting\PHouseNominees.aspx.designer.cs">
+      <DependentUpon>PHouseNominees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Voting\StudentElection.aspx.cs">
       <DependentUpon>StudentElection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +318,12 @@
     </Compile>
     <Compile Include="Voting\TestLogin.aspx.designer.cs">
       <DependentUpon>TestLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voting\VHouseNominees.aspx.cs">
+      <DependentUpon>VHouseNominees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Voting\VHouseNominees.aspx.designer.cs">
+      <DependentUpon>VHouseNominees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Voting\Voating.Master.cs">
       <DependentUpon>Voating.Master</DependentUpon>

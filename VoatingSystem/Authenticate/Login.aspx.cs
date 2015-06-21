@@ -30,8 +30,19 @@ namespace VoatingSystem.Authenticate
                 if (student != null)
                 {
                     Session["LoggedInUser"] = student;
-                    Response.Redirect("~/Voting/StudentElection.aspx");
+                    if (student.Stud_HouseCode.ToString().Trim() == "AH")
+                        Response.Redirect("~/Voting/AHouseNominees.aspx");
+                    else if (student.Stud_HouseCode.ToString().Trim() == "VH")
+                        Response.Redirect("~/Voting/VHouseNominees.aspx");
+                    else if (student.Stud_HouseCode.ToString().Trim() == "PH")
+                        Response.Redirect("~/Voting/PHouseNominees.aspx");
                 }
+            }
+            catch (System.Threading.ThreadAbortException lException)
+            {
+
+                // do nothing
+
             }
             catch (Exception ex)
             {

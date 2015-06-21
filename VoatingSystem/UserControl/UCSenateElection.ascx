@@ -11,20 +11,19 @@
 <div>
     <h5>Head Boy</h5>
     
-    <table>
-        <tr class="HeadBoyRow">
+    
+        <div class="HeadBoyRow">
             <% foreach (VoatingSystem.Business.Entities.Nominees nom in HeadBoyList)
                { %>
-            <td>
-                <div><%= nom.Nom_PhotoURL.ToString()%></div>
-                <div><%= nom.Nom_Name.ToString()%></div>
-                <div onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=<%=nom.Nom_Key.ToString()%>',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
-                <div>Vote Button</div>
-            </td>
+            <div class="senate-con">
+                <div class="senate-profile"><%= nom.Nom_PhotoURL.ToString()%></div>
+                <div class="senate-name"><%= nom.Nom_Name.ToString()%></div>
+                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=<%=nom.Nom_Key.ToString()%>',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
+                <div class="senate-vote">Vote Button</div>
+            </div>
             <% } %>
             
-        </tr>
-    </table>
+        </div>  
 </div>
 
 <div>
