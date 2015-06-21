@@ -25,17 +25,23 @@ namespace VoatingSystem.Authenticate
             try
             {
                 Authentication auth = new Authentication();
-                StudentEntity student = auth.CheckStudentExist(username.Text.ToString().ToLower(), password.Text.ToString().ToLower());
-
-                if (student != null)
+                if (username.Text.ToLower() == "administator" && password.Text.ToLower() == "admin@123")
+                    Response.Redirect("~/Admin/AdminWelcome.aspx");
+                else
                 {
-                    Session["LoggedInUser"] = student;
-                    if (student.Stud_HouseCode.ToString().Trim() == "AH")
-                        Response.Redirect("~/Voting/AHouseNominees.aspx");
-                    else if (student.Stud_HouseCode.ToString().Trim() == "VH")
-                        Response.Redirect("~/Voting/VHouseNominees.aspx");
-                    else if (student.Stud_HouseCode.ToString().Trim() == "PH")
-                        Response.Redirect("~/Voting/PHouseNominees.aspx");
+                    StudentEntity student = auth.CheckStudentExist(username.Text.ToString().ToLower(), password.Text.ToString().ToLower());
+
+                    if (student != null)
+                    {
+                        if (student.Stud_UserType == "")
+                            Session["LoggedInUser"] = student;
+                        if (student.Stud_HouseCode.ToString().Trim() == "AH")
+                            Response.Redirect("~/Voting/AHouseNominees.aspx");
+                        else if (student.Stud_HouseCode.ToString().Trim() == "VH")
+                            Response.Redirect("~/Voting/VHouseNominees.aspx");
+                        else if (student.Stud_HouseCode.ToString().Trim() == "PH")
+                            Response.Redirect("~/Voting/PHouseNominees.aspx");
+                    }
                 }
             }
             catch (System.Threading.ThreadAbortException lException)
