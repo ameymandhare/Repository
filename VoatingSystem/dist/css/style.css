@@ -1,0 +1,7 @@
+﻿.pull-center,
+.main-footer{
+    text-align:center;
+}
+.navbar-nav > .user-menu > .dropdown-menu {
+    width:197px;
+}
