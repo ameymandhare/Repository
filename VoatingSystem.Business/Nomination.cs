@@ -161,5 +161,7 @@ namespace VoatingSystem.Business
             }
             return studNom;
         }
+
+        //public bool UpdateVoatedList()
     }
 }

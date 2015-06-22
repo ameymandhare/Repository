@@ -27,6 +27,14 @@ namespace VoatingSystem.Business.Entities
         private int stud_HouseId;
         private string stud_UserType;
         private string stud_HouseCode;
+        private string stud_Photo;
+        private string stud_Password;
+
+        public string Stud_Password
+        {
+            get { return stud_Password; }
+            set { stud_Password = value; }
+        }
 
         public int Stud_Id
         {
@@ -146,6 +154,12 @@ namespace VoatingSystem.Business.Entities
         {
             get { return stud_HouseCode; }
             set { stud_HouseCode = value; }
+        }
+
+        public string Stud_Photo
+        {
+            get { return stud_Photo; }
+            set { stud_Photo = value; }
         }
     }
 }
