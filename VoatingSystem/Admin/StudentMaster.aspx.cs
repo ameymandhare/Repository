@@ -33,6 +33,7 @@ namespace VoatingSystem.Admin
                     studEn.Stud_LName = dr["stud_LastName"].ToString();
                     studEn.Stud_ClassSection = dr["Csc_DisplayName"].ToString();
                     studEn.Stud_GenderId = Convert.ToInt32(dr["stud_GenderId"]);
+                    studEn.Stud_Password = dr["stud_Password"].ToString();
 
                     //repeat for all neaded colums
                     toEncode.Add(studEn);

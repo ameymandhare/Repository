@@ -70,6 +70,7 @@
                             width: 30,
                     },
                     { name: "Stud_ClassSection", type: "text", sorting: true, title: "Class Section"  },
+                    { name: "Stud_Password", type: "text", sorting: false, title: "Password"  },
                     { type: "control", editButton: false, deleteButton: false  }
                 ]
             });
