@@ -16,69 +16,63 @@
             <% foreach (VoatingSystem.Business.Entities.Nominees nom in HeadBoyList)
                { %>
             <div class="senate-con">
-                <div class="senate-profile"><%= nom.Nom_PhotoURL.ToString()%></div>
+                <div class="senate-profile"><img src="<%= nom.Nom_PhotoURL.ToString()%>" width="150"/></div>
                 <div class="senate-name"><%= nom.Nom_Name.ToString()%></div>
-                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=<%=nom.Nom_Key.ToString()%>',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
-                <div class="senate-vote">Vote Button</div>
+                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>&electtype=s',post:'id=<%=nom.Nom_Key.ToString()%>',width:500,height:300,opacity:20,topsplit:2})">About Me</div>
+                <div class="senate-vote"><a href="#">Vote Me</a></div>
             </div>
             <% } %>
             
         </div>  
-</div>
+    </div>
 
 <div>
     <h5>Head Girl</h5>
     
-    <table>
-        <tr class="HeadGirlRow">
+    <div class="HeadBoyRow">
             <% foreach (VoatingSystem.Business.Entities.Nominees nom in HeadGirlList)
                { %>
-            <td>
-                <div><%= nom.Nom_PhotoURL.ToString()%></div>
-                <div><%= nom.Nom_Name.ToString()%></div>
-                <div onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=<%=nom.Nom_Key.ToString()%>',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
-                <div>Vote Button</div>
-            </td>
+            <div class="senate-con">
+                <div class="senate-profile"><img src="<%= nom.Nom_PhotoURL.ToString()%>" width="150"/></div>
+                <div class="senate-name"><%= nom.Nom_Name.ToString()%></div>
+                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>&electtype=s',post:'id=<%=nom.Nom_Key.ToString()%>',width:500,height:300,opacity:20,topsplit:2})">About Me</div>
+                <div class="senate-vote"><a href="#">Vote Me</a></div>
+            </div>
             <% } %>
-            
-        </tr>
-    </table>
-</div>
+       </div>  
+ </div>
+
 
 <div>
     <h5>Games Captain</h5>
     
-    <table>
-        <tr class="GamesCapRow">
+    <div class="HeadBoyRow">
             <% foreach (VoatingSystem.Business.Entities.Nominees nom in GamesCaptainList)
                { %>
-            <td>
-                <div><%= nom.Nom_PhotoURL.ToString()%></div>
-                <div><%= nom.Nom_Name.ToString()%></div>
-                <div onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=<%=nom.Nom_Key.ToString()%>',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
-                <div>Vote Button</div>
-            </td>
+            <div class="senate-con">
+                <div class="senate-profile"><img src="<%= nom.Nom_PhotoURL.ToString()%>" width="150"/></div>
+                <div class="senate-name"><%= nom.Nom_Name.ToString()%></div>
+                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>&electtype=s',post:'id=<%=nom.Nom_Key.ToString()%>',width:500,height:300,opacity:20,topsplit:2})">About Me</div>
+                <div class="senate-vote"><a href="#">Vote Me</a></div>
+            </div>
             <% } %>
             
-        </tr>
-    </table>
-</div>
+        </div>  
+ </div>
+
 
 <div>
     <h5>Vice Games Captain</h5>
     
-    <table>
-        <tr class="GamesViceCapRow">
+    <div class="HeadBoyRow">
             <% foreach (VoatingSystem.Business.Entities.Nominees nom in ViceGamesCaptainList)
                { %>
-            <td>
-                <div><%= nom.Nom_PhotoURL.ToString()%></div>
-                <div><%= nom.Nom_Name.ToString()%></div>
-                <div onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>',post:'id=16',width:300,height:200,opacity:20,topsplit:2})">About Me</div>
-                <div>Vote Button</div>
-            </td>
+            <div class="senate-con">
+                <div class="senate-profile"><img src="<%= nom.Nom_PhotoURL.ToString()%>" width="150"/></div>
+                <div class="senate-name"><%= nom.Nom_Name.ToString()%></div>
+                <div class="senate-about" onclick="javascript:TINY.box.show({url:'NomineeDetails.aspx?id=<%=nom.Nom_Key.ToString()%>&electtype=s',post:'id=16',width:500,height:300,opacity:20,topsplit:2})">About Me</div>
+                <div class="senate-vote"><a href="#">Vote Me</a></div>
+            </div>
             <% } %>
-            
-        </tr>
-    </table>
-</div>
+      </div>  
+ </div>

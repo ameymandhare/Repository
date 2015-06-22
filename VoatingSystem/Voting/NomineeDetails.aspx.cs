@@ -24,11 +24,15 @@ namespace VoatingSystem.Voting
         {
             get
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+                if (!string.IsNullOrEmpty(Request.QueryString["id"]) && !string.IsNullOrEmpty(Request.QueryString["electtype"]))
                 {
                     Nomination nominee = new Nomination();
-
-                    return nominee.GetSenateNomineesById(Request.QueryString["id"].ToString().ToLower());
+                    if (Request.QueryString["electtype"].ToString().ToLower() == "s")
+                        return nominee.GetSenateNomineesById(Request.QueryString["id"].ToString().ToLower());
+                    else if (Request.QueryString["electtype"].ToString().ToLower() == "h")
+                        return nominee.GetHouseNominationsById(Request.QueryString["id"].ToString().ToLower());
+                    else
+                        return null;
                 }
                 else
                 {

@@ -120,15 +120,34 @@ table{
 }
 
 .senate-con {
-    width:300px;
+    width:210px;
     display:inline-block;
     box-shadow: 0 0 3px #868585;
     text-align: center;
+    padding: 10px;
 }
 
+.senate-vote a{
+    background: #F90;
+    border: 1px solid #9F6104;
+    padding: 3px 10px;
+    color: #0B0909;
+}
+
+.senate-vote a:hover{
+    background: #FFF none repeat scroll 0% 0%;
+    color: #E46E0A;
+}
+
+.senate-name {
+    color: #C65502;
+font-weight: bold;
+margin-top: 5px;
+}
 .senate-about {
     cursor:pointer;
     color: #1474A8;
+    margin: 5px 0;
 }
 .jsgrid-table th{
     color:#565656;
@@ -148,7 +167,9 @@ table{
    background: #FFF none repeat scroll 0% 0%;
     box-shadow: 0 0 5px;
 }
-
+.skin-blue .wrapper {
+    box-shadow:none;
+}
 .skin-blue .sidebar-menu > li > a:hover, .skin-blue .sidebar-menu > li.active > a {
     color: #FFF;
     background: #007280 none repeat scroll 0% 0%;
@@ -219,4 +240,22 @@ table{
 .skin-blue .main-header .navbar .nav .open > a:hover,
 .skin-blue .main-header .navbar .nav .open > a:focus{
     background: #083854 none repeat scroll 0% 0%;
+}
+
+.prefect-div h5 {
+    color: #FF6300;
+font-size: 18px;
+font-weight: bold;
+}
+.navbar-custom-menu > .navbar-nav > li {
+    position: relative;
+    width: 187px;
+}
+.skin-blue .main-header .navbar .navbar-custom-menu > .nav {
+    margin-right: 0px;
+    width: 187px;
+}
+.main-header .navbar-custom-menu{
+    margin-right: 0;
+    float: right;
 }

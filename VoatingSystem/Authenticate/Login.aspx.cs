@@ -25,7 +25,7 @@ namespace VoatingSystem.Authenticate
             try
             {
                 Authentication auth = new Authentication();
-                if (username.Text.ToLower() == "administator" && password.Text.ToLower() == "admin@123")
+                if (username.Text.ToLower() == "admin" && password.Text.ToLower() == "admin@123")
                     Response.Redirect("~/Admin/AdminWelcome.aspx");
                 else
                 {
@@ -33,8 +33,7 @@ namespace VoatingSystem.Authenticate
 
                     if (student != null)
                     {
-                        if (student.Stud_UserType == "")
-                            Session["LoggedInUser"] = student;
+                        Session["LoggedInUser"] = student;
                         if (student.Stud_HouseCode.ToString().Trim() == "AH")
                             Response.Redirect("~/Voting/AHouseNominees.aspx");
                         else if (student.Stud_HouseCode.ToString().Trim() == "VH")

@@ -104,7 +104,7 @@ namespace VoatingSystem.UserControl
             {
                 if (allSenateList != null && allSenateList.Count > 0)
                 {
-                    return allSenateList.Where(x => x.Nom_DesignationCode.ToUpper() == "GVC").ToList();
+                    return allSenateList.Where(x => x.Nom_DesignationCode.ToUpper() == "VGC").ToList();
                 }
                 else
                 {
