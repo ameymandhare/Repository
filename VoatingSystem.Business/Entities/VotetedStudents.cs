@@ -13,6 +13,42 @@ namespace VoatingSystem.Business.Entities
         private bool vst_IVFHeadSenate;
         private bool vst_IVFGamesCap;
         private bool vst_IVFGamesViceCap;
+        private bool vst_IVFPrfect;
+
+        public bool Vst_IVFPrfect
+        {
+            get { return vst_IVFPrfect; }
+            set { vst_IVFPrfect = value; }
+        }
+        private bool vst_IVFVicePrefect;
+
+        public bool Vst_IVFVicePrefect
+        {
+            get { return vst_IVFVicePrefect; }
+            set { vst_IVFVicePrefect = value; }
+        }
+        private bool vst_IVFJuniorPrefet;
+
+        public bool Vst_IVFJuniorPrefet
+        {
+            get { return vst_IVFJuniorPrefet; }
+            set { vst_IVFJuniorPrefet = value; }
+        }
+        private bool vst_IVFHeadBoy;
+
+        public bool Vst_IVFHeadBoy
+        {
+            get { return vst_IVFHeadBoy; }
+            set { vst_IVFHeadBoy = value; }
+        }
+        private bool vst_IVFHeadGirl;
+
+        public bool Vst_IVFHeadGirl
+        {
+            get { return vst_IVFHeadGirl; }
+            set { vst_IVFHeadGirl = value; }
+        }
+
         Nominees nomiees;
 
         public Nominees Nomiees

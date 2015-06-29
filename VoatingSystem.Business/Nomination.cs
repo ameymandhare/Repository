@@ -18,8 +18,8 @@ namespace VoatingSystem.Business
         {
             DataTable mytable = null;
             String key = "AllSenateNominees";
-            if (HttpContext.Current.Cache[key] == null)
-            {
+            //if (HttpContext.Current.Cache[key] == null)
+            //{
                 using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetAllSenateNominees))
                 {
                     if (dr.HasRows)
@@ -29,15 +29,15 @@ namespace VoatingSystem.Business
                     }
                 }
 
-                if (mytable != null && mytable.Rows.Count > 0)
-                {
-                    HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
-                }
-            }
-            else
-            {
-                mytable = (DataTable)HttpContext.Current.Cache[key];
-            }
+                //if (mytable != null && mytable.Rows.Count > 0)
+                //{
+                //    HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
+                //}
+            //}
+            //else
+            //{
+            //    mytable = (DataTable)HttpContext.Current.Cache[key];
+            //}
             return mytable;
         }
 
@@ -93,26 +93,26 @@ namespace VoatingSystem.Business
         {
             DataTable mytable = null;
             String key = "AllHouseNominees";
-            if (HttpContext.Current.Cache[key] == null)
+            //if (HttpContext.Current.Cache[key] == null)
+            //{
+            using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetHouseNominationsNameByHouseId, houseId))
             {
-                using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetHouseNominationsNameByHouseId, houseId))
+                if (dr.HasRows)
                 {
-                    if (dr.HasRows)
-                    {
-                        mytable = new DataTable();
-                        mytable.Load(dr);
-                    }
+                    mytable = new DataTable();
+                    mytable.Load(dr);
                 }
+            }
 
-                if (mytable != null && mytable.Rows.Count > 0)
-                {
-                    HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
-                }
-            }
-            else
+            if (mytable != null && mytable.Rows.Count > 0)
             {
-                mytable = (DataTable)HttpContext.Current.Cache[key];
+                HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
             }
+            //}
+            //else
+            //{
+            //    mytable = (DataTable)HttpContext.Current.Cache[key];
+            //}
             return mytable;
         }
 
@@ -120,26 +120,26 @@ namespace VoatingSystem.Business
         {
             DataTable mytable = null;
             String key = "AllHouseNominees";
-            if (HttpContext.Current.Cache[key] == null)
+            //if (HttpContext.Current.Cache[key] == null)
+            //{
+            using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetHouseNominationsNameByHouseId, 0))
             {
-                using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetHouseNominationsNameByHouseId, 0))
+                if (dr.HasRows)
                 {
-                    if (dr.HasRows)
-                    {
-                        mytable = new DataTable();
-                        mytable.Load(dr);
-                    }
+                    mytable = new DataTable();
+                    mytable.Load(dr);
                 }
+            }
 
-                if (mytable != null && mytable.Rows.Count > 0)
-                {
-                    HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
-                }
-            }
-            else
+            if (mytable != null && mytable.Rows.Count > 0)
             {
-                mytable = (DataTable)HttpContext.Current.Cache[key];
+                HttpContext.Current.Cache.Insert(key, mytable, null, DateTime.Now.AddDays(1), System.Web.Caching.Cache.NoSlidingExpiration);
             }
+            //}
+            //else
+            //{
+            //    mytable = (DataTable)HttpContext.Current.Cache[key];
+            //}
             Nominees studNom = null;
 
             foreach (DataRow dr in mytable.Rows)
@@ -162,6 +162,37 @@ namespace VoatingSystem.Business
             return studNom;
         }
 
-        //public bool UpdateVoatedList()
+        public bool UpdateCandidateVote(VotetedStudents votetedStudents, string ColumnName)
+        {
+            return Convert.ToBoolean(SqlHelper.ExecuteNonQuery(SqlHelper.ConnectionString, ProcedureConstant.SPUpdateCandidateVote,
+                                      votetedStudents.Vst_StudentKey.ToString(),
+                                      votetedStudents.Nomiees.Nom_Key,
+                                      votetedStudents.Nomiees.Nom_ElectYype,
+                                      ColumnName) > 0);
+        }
+
+        public VotetedStudents GetVotetedStudentsStatus(string studId)
+        {
+            VotetedStudents votetedStudents = null;
+            using (SqlDataReader dr = SqlHelper.ExecuteReader(SqlHelper.ConnectionString, ProcedureConstant.SPGetVoteStatus, studId))
+            {
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        votetedStudents = new VotetedStudents();
+                        votetedStudents.Vst_StudentKey = dr["Vst_StudentKey"].ToString();
+                        votetedStudents.Vst_IVFPrfect = Convert.ToBoolean(dr["Vst_IVFPrfect"]);
+                        votetedStudents.Vst_IVFVicePrefect = Convert.ToBoolean(dr["Vst_IVFVicePrefect"]);
+                        votetedStudents.Vst_IVFJuniorPrefet = Convert.ToBoolean(dr["Vst_IVFJuniorPrefet"]);
+                        votetedStudents.Vst_IVFHeadBoy = Convert.ToBoolean(dr["Vst_IVFHeadBoy"]);
+                        votetedStudents.Vst_IVFHeadGirl = Convert.ToBoolean(dr["Vst_IVFHeadGirl"]);
+                        votetedStudents.Vst_IVFGamesCap = Convert.ToBoolean(dr["Vst_IVFGamesCap"]);
+                        votetedStudents.Vst_IVFGamesViceCap = Convert.ToBoolean(dr["Vst_IVFViceGamesCap"]);
+                    }
+                }
+            }
+            return votetedStudents;
+        }
     }
 }

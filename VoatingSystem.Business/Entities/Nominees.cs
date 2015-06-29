@@ -72,5 +72,21 @@ namespace VoatingSystem.Business.Entities
             get { return nom_DesignationCode; }
             set { nom_DesignationCode = value; }
         }
+
+        private string nom_ElectYype;
+
+        public string Nom_ElectYype
+        {
+            get { return nom_ElectYype; }
+            set { nom_ElectYype = value; }
+        }
+
+        private int nom_VoteCount;
+
+        public int Nom_VoteCount
+        {
+            get { return nom_VoteCount; }
+            set { nom_VoteCount = value; }
+        }
     }
 }

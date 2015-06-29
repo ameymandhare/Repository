@@ -132,7 +132,7 @@ namespace VoatingSystem.Business
                                 studentSession.Stud_HouseName = dr.GetString(16);
                                 studentSession.Stud_UserType = dr.GetString(17);
                                 studentSession.Stud_HouseCode = dr.GetString(18);
-                                studentSession.Stud_Photo = string.Empty;// dr.GetString(19);
+                                studentSession.Stud_Photo = dr.GetInt32(6) == 1 ? "../dist/img/boy.png" : "../dist/img/dT7eM7rac.png";// string.Empty;// dr.GetString(19);
                                 break;
                             }
                         }
