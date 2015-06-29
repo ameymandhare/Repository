@@ -40,6 +40,8 @@ namespace VoatingSystem.Authenticate
                             Response.Redirect("~/Voting/VHouseNominees.aspx");
                         else if (student.Stud_HouseCode.ToString().Trim() == "PH")
                             Response.Redirect("~/Voting/PHouseNominees.aspx");
+                        else if (student.Stud_HouseCode.ToString().Trim() == "SH")
+                            Response.Redirect("~/Voting/SHouseNominees.aspx");
                     }
                 }
             }
