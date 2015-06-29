@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using VoatingSystem.Business;
 using VoatingSystem.Business.Common;
 using VoatingSystem.Business.Entities;
+using VoatingSystem.Common;
 
 namespace VoatingSystem.UserControl
 {
@@ -15,29 +16,9 @@ namespace VoatingSystem.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Nomination nm = new Nomination();
-
-            dt = new DataTable();
-            Authentication auth = new Authentication();
-            dt = nm.GetAllSenateNominees();
-            Nominees studNom;
+            UICommon uICommon = new UICommon();
             allSenateList = new List<Nominees>();
-            foreach (DataRow dr in dt.Rows)
-            {
-                studNom = new Nominees();
-                studNom.Nom_Id = Convert.ToInt32(dr["NomineeId"]);
-                studNom.Nom_Key = dr["StudentID"].ToString();
-                studNom.Nom_Name = dr["StudentName"].ToString();
-                studNom.Nom_DesignationId = Convert.ToInt32(dr["DesignationID"]);
-                studNom.Nom_DesignationKey = dr["DesignationText"].ToString();
-                studNom.Nom_DesignationCode = dr["DesignationCode"].ToString();
-                studNom.Nom_ClassSection = dr["ClassSection"].ToString();
-                studNom.Nom_PhotoURL = dr["PhotoURL"].ToString();
-                studNom.Nom_AboutNominee = dr["AboutMe"].ToString();
-
-                //repeat for all needed colums
-                allSenateList.Add(studNom);
-            }
+            allSenateList = uICommon.FillNominationDetails(0,"s");
         }
 
 
