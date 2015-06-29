@@ -13,13 +13,24 @@ namespace VoatingSystem.Voting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["id"]) && !string.IsNullOrEmpty(Request.QueryString["electtype"]) 
-                && !string.IsNullOrEmpty(Request.QueryString["designationcode"]))
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]) && !string.IsNullOrEmpty(Request.QueryString["electtype"])
+                && !string.IsNullOrEmpty(Request.QueryString["columnname"]))
             {
+                bool isVotedSuccess = false;
                 VotetedStudents votetedStudents = new VotetedStudents();
                 votetedStudents.Nomiees = new Nominees();
-                Nomination nominee = new Nomination();
+                votetedStudents.Vst_StudentKey = ((StudentEntity)Session["LoggedInUser"]).Stud_Key;
+                votetedStudents.Nomiees.Nom_Key = Request.QueryString["id"];
+                votetedStudents.Nomiees.Nom_ElectYype = Request.QueryString["electtype"];
+                string columnName = Request.QueryString["columnname"];
 
+                Nomination nominee = new Nomination();
+                isVotedSuccess = nominee.UpdateCandidateVote(votetedStudents, columnName);
+
+                if (isVotedSuccess)
+                    lbl_IsVotedSuccess.Text = "\n\nThanks for Voating !!!";
+                else
+                    lbl_IsVotedSuccess.Text = "\n\nInvalid Vote. Please Try Again";
             }
         }
     }

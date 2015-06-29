@@ -43,7 +43,7 @@
                     indexLabelFontColor: "MistyRose",
                     indexLabelLineColor: "darkgrey",
                     indexLabelPlacement: "inside",
-                    toolTipContent: "{name}: {y}hrs",
+                    toolTipContent: "{name}: {y} votes",
                     showInLegend: true,
                     indexLabel: "#percent%",
                     dataPoints: [
@@ -101,7 +101,7 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+            <div class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -128,8 +128,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="PHouseReport.aspx"><i class="fa fa-circle-o"></i>Pruthvi House Report</a></li>
+                                
                                 <li><a href="AHouseReport.aspx"><i class="fa fa-circle-o"></i>Agni House Report</a></li>
+                                <li><a href="PHouseReport.aspx"><i class="fa fa-circle-o"></i>Prithvi House Report</a></li>
                                 <li><a href="SHouseReport.aspx"><i class="fa fa-circle-o"></i>Surya House Report</a></li>
                                 <li><a href="VHouseReport.aspx"><i class="fa fa-circle-o"></i>Varun House Report</a></li>
                                 <li><a href="SenateElectionReport.aspx"><i class="fa fa-circle-o"></i>Senate Election Report</a></li>
@@ -138,20 +139,20 @@
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-users"></i>
-                                <span>House</span>
+                                <span>Student</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="StudentMaster.aspx"><i class="fa fa-circle-o"></i>Student Master</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Student House Master</a></li>
-                                <%--<li><a href="#"><i class="fa fa-circle-o"></i>Manage Student House</a></li>--%>
+                                <li><a href="StudentHouseMaster.aspx"><i class="fa fa-circle-o"></i>Student House Master</a></li>
+                                <%--<li><a href="StudentMaster.aspx"><i class="fa fa-circle-o"></i>Manage Student House</a></li>--%>
                             </ul>
                         </li>
 
                     </ul>
                 </section>
                 <!-- /.sidebar -->
-            </aside>
+            </div>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">

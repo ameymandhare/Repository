@@ -89,7 +89,7 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+            <div class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -113,7 +113,7 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
+                        <%--<li class="treeview">
                             <a href="#">
                                 <i class="fa fa-table"></i><span>Election</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -122,13 +122,13 @@
                                 <li><a href="CurrentElection.aspx"><i class="fa fa-circle-o"></i>Current Election</a></li>
 
                             </ul>
-                        </li>
+                        </li>--%>
 
 
                     </ul>
                 </section>
                 <!-- /.sidebar -->
-            </aside>
+            </div>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">

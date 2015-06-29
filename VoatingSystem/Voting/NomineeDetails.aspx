@@ -12,7 +12,7 @@
             <table style="width:100%">
                 <tr>
                     <td>
-                        IMAGE: <img src="<%= Nominee.Nom_PhotoURL.ToString()%>" width="150"/><%--<%= Nominee.Nom_PhotoURL %>--%>
+                        <img src="<%= Nominee.Nom_PhotoURL.ToString()%>" width="150"/><%--<%= Nominee.Nom_PhotoURL %>--%>
                     </td>
                     <td>
                         <table>

@@ -19,7 +19,7 @@
     <script src="../dist/js/JSGrid/jsgrid.field.control.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-            var chart = new CanvasJS.Chart("chartContainer",
+            var chart1 = new CanvasJS.Chart("chartContainer1",
             {
 
                 animationEnabled: true,
@@ -38,114 +38,171 @@
                     indexLabelFontColor: "MistyRose",
                     indexLabelLineColor: "darkgrey",
                     indexLabelPlacement: "inside",
-                    toolTipContent: "{name}: {y}hrs",
+                    toolTipContent: "{name}: {y} Votes",
                     showInLegend: true,
                     indexLabel: "#percent%",
                     dataPoints: [
-                        { y: 52, name: "Time At Work", legendMarkerType: "triangle" },
-                        { y: 44, name: "Time At Home", legendMarkerType: "square" },
-                        { y: 12, name: "Time Spent Out", legendMarkerType: "circle" },
-                        { y: 2, name: "Time Spent Out", legendMarkerType: "circle" }
+                        <% foreach (VoatingSystem.Business.Entities.Nominees prefets in PreferList)
+                           {%>
+                        { y: <%=prefets.Nom_VoteCount%>, name: "<%=prefets.Nom_Name%>", legendMarkerType: "circle" },
+                        <% }%>
                     ]
                 }
                 ]
             });
-            chart.render();
+            var chart2 = new CanvasJS.Chart("chartContainer2",
+           {
+
+               animationEnabled: true,
+               legend: {
+                   verticalAlign: "center",
+                   horizontalAlign: "right"
+               },
+               theme: "theme1",
+               data: [
+               {
+                   type: "pie",
+                   indexLabelFontFamily: "Garamond",
+                   indexLabelFontSize: 14,
+                   indexLabelFontWeight: "bold",
+                   startAngle: 0,
+                   indexLabelFontColor: "MistyRose",
+                   indexLabelLineColor: "darkgrey",
+                   indexLabelPlacement: "inside",
+                   toolTipContent: "{name}: {y} votes",
+                   showInLegend: true,
+                   indexLabel: "#percent%",
+                   dataPoints: [
+                      <% foreach (VoatingSystem.Business.Entities.Nominees prefets in VicePreferList)
+                         {%>
+                        { y: <%=prefets.Nom_VoteCount%>, name: "<%=prefets.Nom_Name%>", legendMarkerType: "circle" },
+                        <% }%>
+                   ]
+               }
+               ]
+           });
+            var chart3 = new CanvasJS.Chart("chartContainer3",
+           {
+
+               animationEnabled: true,
+               legend: {
+                   verticalAlign: "center",
+                   horizontalAlign: "right"
+               },
+               theme: "theme1",
+               data: [
+               {
+                   type: "pie",
+                   indexLabelFontFamily: "Garamond",
+                   indexLabelFontSize: 14,
+                   indexLabelFontWeight: "bold",
+                   startAngle: 0,
+                   indexLabelFontColor: "MistyRose",
+                   indexLabelLineColor: "darkgrey",
+                   indexLabelPlacement: "inside",
+                   toolTipContent: "{name}: {y} votes",
+                   showInLegend: true,
+                   indexLabel: "#percent%",
+                   dataPoints: [
+                       <% foreach (VoatingSystem.Business.Entities.Nominees prefets in JuniorPreferList)
+                          {%>
+                        { y: <%=prefets.Nom_VoteCount%>, name: "<%=prefets.Nom_Name%>", legendMarkerType: "circle" },
+                        <% }%>
+                   ]
+               }
+               ]
+           });
+            chart1.render();
+            chart2.render();
+            chart3.render();
         }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="chart-title">Agni House Report</div>
-    <div class="stud-table">
-        <div id="jsGrid"></div>
-    <script>
-        var $NoConflict = jQuery.noConflict();
+    <div class="sub-chart-title">PREFECT</div>
+    <div>
+        <div class="stud-table">
+            <table cellpadding="0" cellspacing="0" border-collapse="colapse">
+                <tr>
+                    <th>Profile Picture</th>
+                    <th>Candidate Id</th>
+                    <th>Student Name</th>
+                    <th>Class Section</th>
+                    <th>Vote Count</th>
+                </tr>
+                <% foreach (VoatingSystem.Business.Entities.Nominees prefets in PreferList)
+                   {%>
+                <tr>
+                    <td>
+                        <img class="profile-pic" src="<%=prefets.Nom_PhotoURL%>" width="50">
+                    </td>
+                    <td><%=prefets.Nom_Key%></td>
+                    <td><%=prefets.Nom_Name%></td>
+                    <td><%=prefets.Nom_ClassSection%></td>
+                    <td><%=prefets.Nom_VoteCount%></td>
+                </tr>
+                <%    } %>
+            </table>
+        </div>
 
-        var Data = <%= JsonData.ToString()%>;
-        $NoConflict(function () {
-
-            $NoConflict("#jsGrid").jsGrid({
-                height: "auto",
-                width: "100%",
-                filtering: true,
-                editing: false,
-                sorting: true,
-                paging: true,
-                autoload: true,
-                pageSize: 15,
-                pageButtonCount: 5,
-                deleteConfirm: "Do you really want to delete the client?",
-                controller: {
-                    loadData: function (filter) {
-                        return $.grep(Data, function (student) {
-                            return (!filter.Stud_Photo || student.Stud_Photo.toLowerCase().indexOf(filter.Stud_Photo.toLowerCase()) > -1)
-                                && (!filter.Stud_Key || student.Stud_Key.toLowerCase().indexOf(filter.Stud_Key.toLowerCase()) > -1)
-                                && (!filter.Stud_Name || student.Stud_Name.toLowerCase().indexOf(filter.Stud_Name.toLowerCase()) > -1)
-                                && (!filter.Stud_ClassSection || student.Stud_ClassSection.toLowerCase().indexOf(filter.Stud_ClassSection.toLowerCase()) > -1)
-                                && (!filter.Stud_VoteCount || student.Stud_VoteCount === filter.Stud_VoteCount)
-                        });
-                    }
-                },
-                fields: [
-                    { name: "Stud_Photo", type: "text", width: 90, title: "Profile Picture"  },
-                    { name: "Stud_Key", type: "text", width: 50, title: "Election ID" },
-                    { name: "Stud_Name", type: "text", width: 90, title: "Student Name" },
-                    { name: "Stud_ClassSection", type: "text", sorting: true, title: "Class Section"  },
-                    { name: "Stud_VoteCount", type: "text", sorting: true, title: "Vote Count"  },
-                    { type: "control", editButton: false, deleteButton: false  }
-                ]
-            });
-
-        });
-    </script>
-        <%--<table cellpadding="0" cellspacing="0" border-collapse="colapse">
-            <tr>
-                <th>Profile Picture</th>
-                <th>Username</th>
-                <th>Student Name</th>
-                <th>Class</th>
-                <th>Vote Count</th>
-            </tr>
-            <tr>
-                <td>
-                    <img class="profile-pic" src="../dist/img/dT7eM7rac.png" width="50">
-                </td>
-                <td>renukap</td>
-                <td>Renuks Padwal</td>
-                <td>Ist</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>
-                    <img class="profile-pic" src="../dist/img/boy.png" width="50">
-                </td>
-                <td>renukap</td>
-                <td>Renuks Padwal</td>
-                <td>Ist</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>
-                    <img class="profile-pic" src="../dist/img/dT7eM7rac.png" width="50">
-                </td>
-                <td>renukap</td>
-                <td>Renuks Padwal</td>
-                <td>Ist</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>
-                    <img class="profile-pic" src="../dist/img/boy.png" width="50">
-                </td>
-                <td>renukap</td>
-                <td>Renuks Padwal</td>
-                <td>Ist</td>
-                <td>20</td>
-            </tr>
-        </table>--%>
-    </div>       
-    
-    <div id="chartContainer" style="width: 300px; height:200px; margin-left: 60px;">
-    
+        <div id="chartContainer1" style="width: 350px; height: 300px;">
+        </div>
+    </div>
+    <div class="sub-chart-title">VICE PREFECT</div>
+    <div>
+        <div class="stud-table">
+            <table cellpadding="0" cellspacing="0" border-collapse="colapse">
+                <tr>
+                    <th>Profile Picture</th>
+                    <th>Candidate Id</th>
+                    <th>Student Name</th>
+                    <th>Class Section</th>
+                    <th>Vote Count</th>
+                </tr>
+                <% foreach (VoatingSystem.Business.Entities.Nominees prefets in VicePreferList)
+                   {%>
+                <tr>
+                    <td>
+                        <img class="profile-pic" src="<%=prefets.Nom_PhotoURL%>" width="50">
+                    </td>
+                    <td><%=prefets.Nom_Key%></td>
+                    <td><%=prefets.Nom_Name%></td>
+                    <td><%=prefets.Nom_ClassSection%></td>
+                    <td><%=prefets.Nom_VoteCount%></td>
+                </tr>
+                <%    } %>
+            </table>
+        </div>
+        <div id="chartContainer2" style="width: 350px; height: 300px;">
+        </div>
+    </div>
+    <div class="sub-chart-title">JUNIOR PREFECT</div>
+    <div>
+        <div class="stud-table">
+            <table cellpadding="0" cellspacing="0" border-collapse="colapse">
+                <tr>
+                    <th>Profile Picture</th>
+                    <th>Candidate Id</th>
+                    <th>Student Name</th>
+                    <th>Class Section</th>
+                    <th>Vote Count</th>
+                </tr>
+                <% foreach (VoatingSystem.Business.Entities.Nominees prefets in JuniorPreferList)
+                   {%>
+                <tr>
+                    <td>
+                        <img class="profile-pic" src="<%=prefets.Nom_PhotoURL%>" width="50">
+                    </td>
+                    <td><%=prefets.Nom_Key%></td>
+                    <td><%=prefets.Nom_Name%></td>
+                    <td><%=prefets.Nom_ClassSection%></td>
+                    <td><%=prefets.Nom_VoteCount%></td>
+                </tr>
+                <%    } %>
+            </table>
+        </div>
+        <div id="chartContainer3" style="width: 350px; height: 300px;;">
+        </div>
     </div>
 </asp:Content>

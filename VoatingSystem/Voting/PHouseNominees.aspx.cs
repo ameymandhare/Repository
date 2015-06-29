@@ -11,7 +11,7 @@ using VoatingSystem.Common;
 
 namespace VoatingSystem.Voting
 {
-    public partial class VHouseNominees : System.Web.UI.Page
+    public partial class PHouseNominees : System.Web.UI.Page
     {
         #region Data Structures & Member Variables
         List<Nominees> allNomineesList;

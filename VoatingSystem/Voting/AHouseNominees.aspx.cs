@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using VoatingSystem.Business;
 using VoatingSystem.Business.Entities;
+using VoatingSystem.Common;
 
 namespace VoatingSystem.Voting
 {
@@ -14,6 +15,14 @@ namespace VoatingSystem.Voting
     {
         #region Data Structures & Member Variables
         List<Nominees> allNomineesList;
+
+        VotetedStudents votetedStatus;
+
+        public VotetedStudents VotetedStatus
+        {
+            get { return votetedStatus; }
+            set { votetedStatus = value; }
+        }
 
         List<Nominees> prefectList;
 
@@ -72,32 +81,17 @@ namespace VoatingSystem.Voting
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Nomination nm = new Nomination();
-            dt = new DataTable();
-            Authentication auth = new Authentication();
+            UICommon uICommon = new UICommon();
+            Nomination nomination = new Nomination();
             if (Session["LoggedInUser"] != null)
             {
                 int studHouseId = ((StudentEntity)Session["LoggedInUser"]).Stud_HouseId;
-                dt = nm.GetHouseNominations(studHouseId);
-                Nominees studNom;
-                allNomineesList = new List<Nominees>();
-                foreach (DataRow dr in dt.Rows)
-                {
-                    studNom = new Nominees();
-                    studNom.Nom_Id = Convert.ToInt32(dr["NomineeId"]);
-                    studNom.Nom_Key = dr["StudentID"].ToString();
-                    studNom.Nom_Name = dr["StudentName"].ToString();
-                    studNom.Nom_DesignationId = Convert.ToInt32(dr["DesignationID"]);
-                    studNom.Nom_DesignationKey = dr["DesignationText"].ToString();
-                    studNom.Nom_DesignationCode = dr["DesignationCode"].ToString();
-                    studNom.Nom_ClassSection = dr["ClassSection"].ToString();
-                    studNom.Nom_PhotoURL = dr["PhotoURL"].ToString();
-                    studNom.Nom_AboutNominee = dr["AboutMe"].ToString();
-
-                    //repeat for all needed colums
-                    allNomineesList.Add(studNom);
-                }
+                allNomineesList = uICommon.FillNominationDetails(studHouseId, "h");
+                string studId = ((StudentEntity)Session["LoggedInUser"]).Stud_Key;
+                VotetedStatus = nomination.GetVotetedStudentsStatus(studId);
             }
+            else
+                Response.Redirect("~/Authenticate/Login.aspx");
         }
     }
 }

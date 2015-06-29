@@ -47,7 +47,7 @@
                                 && (!filter.Stud_MName || student.Stud_MName.toLowerCase().indexOf(filter.Stud_MName.toLowerCase()) > -1)
                                 && (!filter.Stud_LName || student.Stud_LName.toLowerCase().indexOf(filter.Stud_LName.toLowerCase()) > -1)
                                 && (!filter.Stud_GenderId || student.Stud_GenderId === filter.Stud_GenderId)
-                                && (!filter.Stud_ClassSection || student.Stud_ClassSection.toLowerCase().indexOf(filter.Stud_ClassSection.toLowerCase()) > -1)
+                                && (!filter.Stud_ClassSection || student.Stud_ClassSection.toLowerCase() === (filter.Stud_ClassSection.toLowerCase()))
                         });
                     }
                 },

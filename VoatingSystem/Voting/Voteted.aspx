@@ -12,7 +12,7 @@
             <table style="width: 100%">
                 <tr>
                     <td>
-                        You have voteted successfully.
+                        <asp:Label ID="lbl_IsVotedSuccess" runat="server"></asp:Label>
                     </td>
                 </tr>
             </table>
